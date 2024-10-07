@@ -19,6 +19,8 @@ const performCalculations = async () => {
     }));
     Promise.all(promises).then((values) => {
         console.log(values);
+    }).then(() => {
+        process.exit(0);
     });
 };
 
