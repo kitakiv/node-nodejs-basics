@@ -2,7 +2,7 @@ const parseArgs = () => {
     const arrayArgs = process.argv.slice(2);
     const result = arrayArgs.reduce((acc, arg) => {
         if (arg.includes('--')) {
-            arg.replace('--', '');
+            arg = arg.replace('--', '');
             acc.push([arg]);
         } else {
             acc.at(-1).push(arg);

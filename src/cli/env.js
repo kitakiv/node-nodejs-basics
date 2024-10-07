@@ -4,8 +4,7 @@ const parseEnv = () => {
    const evnVars = process.env;
    const rssKeys = Object.keys(evnVars).filter((key) => key.startsWith('RSS_'));
    const result = rssKeys.reduce((acc, key) => {
-       const value = evnVars[key];
-       acc.push(`${key} = ${value}`);
+       acc.push(`${key}=${process.env[key]}`);
        return acc;
    }, []);
    console.log(result.join('; '));
