@@ -10,11 +10,12 @@ const filePath = path.join(__dirname, 'files', 'fileToWrite.txt');
 
 const write = async () => {
     const writeStream = fs.createWriteStream(filePath, { encoding: 'utf8' });
-    process.stdin.pipe(writeStream);
+    const readStream = process.stdin;
+    readStream.pipe(writeStream);
 
     writeStream.on('error', (err) => {
         console.log(err);
-    });
+    })
 };
 
 await write();

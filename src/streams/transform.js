@@ -4,6 +4,10 @@ import process from 'process';
 const transform = async () => {
     const readStream = process.stdin;
     const writeStream = process.stdout;
+    readStream.on('data', (chunk) => {
+        const chunkStringified = chunk.toString().trim();
+        if (chunkStringified.includes('CLOSE')) process.exit(0);
+    })
     const transformStream = new Transform({
         transform(chunk, encoding, callback) {
             const chunkStringified = chunk.toString().trim();
