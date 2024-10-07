@@ -1,1 +1,2 @@
-Compress me!
+Compress me
+it works
