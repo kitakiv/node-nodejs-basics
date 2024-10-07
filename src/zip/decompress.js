@@ -1,4 +1,4 @@
-import { createGzip } from 'node:zlib';
+import { createUnzip } from 'node:zlib';
 import { pipeline } from 'node:stream';
 import { createWriteStream, createReadStream } from 'node:fs';
 import {fileURLToPath} from 'url';
@@ -13,7 +13,7 @@ const decompress = async () => {
     const gzipFile = path.join(__dirname, 'files', 'fileToCompress.txt');
     const fileToDecompress = path.join(__dirname, 'files', 'archive.gz');
 
-    const gzip = createGzip();
+    const gzip = createUnzip();
     const source = createReadStream(fileToDecompress);
     const destination = createWriteStream(gzipFile);
     pipeline(source, gzip, destination, (err) => {
